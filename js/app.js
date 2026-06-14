@@ -1198,23 +1198,38 @@ function resetVMODemo() {
 }
 
 // ============================================
-// SIDEBAR TOGGLE
+// SIDEBAR TOGGLE (Mobile)
 // ============================================
 
-document.getElementById('sidebarToggle').addEventListener('click', () => {
-    document.getElementById('sidebar').classList.toggle('open');
-    document.getElementById('sidebarOverlay').classList.toggle('active');
-});
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+}
 
-document.getElementById('sidebarClose').addEventListener('click', () => {
+function closeSidebar() {
     document.getElementById('sidebar').classList.remove('open');
     document.getElementById('sidebarOverlay').classList.remove('active');
-});
+}
 
-document.getElementById('sidebarOverlay').addEventListener('click', () => {
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('sidebarOverlay').classList.remove('active');
-});
+// Touch events for sidebar
+document.getElementById('sidebarToggle').addEventListener('click', toggleSidebar);
+document.getElementById('sidebarClose').addEventListener('click', closeSidebar);
+document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
+
+// Close sidebar on swipe left (mobile)
+let touchStartX = 0;
+document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (diff > 80 && document.getElementById('sidebar').classList.contains('open')) {
+        closeSidebar();
+    }
+}, { passive: true });
 
 // ============================================
 // NAVIGATION EVENTS
@@ -1225,6 +1240,13 @@ document.querySelectorAll('.nav-item').forEach(el => {
         e.preventDefault();
         navigate(el.dataset.page);
     });
+    // Touch feedback
+    el.addEventListener('touchstart', function() {
+        this.style.transform = 'scale(0.97)';
+    }, { passive: true });
+    el.addEventListener('touchend', function() {
+        this.style.transform = '';
+    }, { passive: true });
 });
 
 // ============================================
@@ -1243,9 +1265,45 @@ document.getElementById('globalSearch').addEventListener('input', function() {
 });
 
 // ============================================
+// WINDOW RESIZE HANDLER
+// ============================================
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        // Re-render charts if on dashboard or reportes
+        if (currentPage === 'dashboard') {
+            initDashboardCharts();
+        } else if (currentPage === 'reportes') {
+            renderReportes(document.getElementById('pageContent'));
+        }
+    }, 300);
+});
+
+// Close sidebar on orientation change (mobile)
+window.addEventListener('orientationchange', () => {
+    setTimeout(closeSidebar, 300);
+});
+
+// ============================================
+// KEYBOARD SHORTCUTS
+// ============================================
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        // Close any open modal
+        document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
+        // Close sidebar if open
+        closeSidebar();
+    }
+});
+
+// ============================================
 // INIT
 // ============================================
 
 seedData();
 navigate('dashboard');
+
    
