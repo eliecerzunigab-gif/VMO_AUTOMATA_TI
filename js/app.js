@@ -27,7 +27,10 @@ const servicesData = [
     { id: 2, category: 'estrategia', icon: 'fa-shield-halved', title: 'Gestión de Compliance y Gobierno IT', desc: 'Marcos de trabajo seguros, normados y escalables. Aseguramos el cumplimiento regulatorio y las mejores prácticas.', tags: ['COBIT', 'ISO 27001', 'GDPR', 'SOX'] },
     { id: 3, category: 'estrategia', icon: 'fa-cubes', title: 'Gestión Estratégica VMO', desc: 'Optimización del valor del ecosistema de proveedores. Maximice el valor del portafolio con nuestra plataforma.', tags: ['VMO', 'Proveedores', 'Portafolio'] },
     { id: 4, category: 'estrategia', icon: 'fa-scale-balanced', title: 'GRC Avanzado', desc: 'Evaluación integral de riesgos, continuidad operativa (BIA/BCP/DRP) y resiliencia empresarial.', tags: ['GRC', 'Riesgos', 'BCP', 'DRP', 'BIA'] },
+    { id: 15, category: 'estrategia', icon: 'fa-fingerprint', title: 'IAM & CIAM - Gestión de Identidades', desc: 'Soluciones integrales de Identidad y Acceso (IAM/CIAM): autenticación multifactor, single sign-on, gobierno de identidades y control de accesos basado en riesgos.', tags: ['IAM', 'CIAM', 'SSO', 'MFA', 'Autenticación'] },
+    { id: 16, category: 'estrategia', icon: 'fa-shield', title: 'Ciberseguridad & Protección Digital', desc: 'Arquitectura de seguridad zero trust, protección contra fraudes de identidad, seguridad en la nube y cumplimiento normativo de clase empresarial.', tags: ['Ciberseguridad', 'Zero Trust', 'Fraude', 'Cloud Security'] },
     { id: 5, category: 'operaciones', icon: 'fa-gears', title: 'Gestión ITSM & ITIL', desc: 'Estandarización y eficiencia en la entrega de servicios TI. Implementación de procesos basados en ITIL.', tags: ['ITSM', 'ITIL', 'Service Desk'] },
+
     { id: 6, category: 'operaciones', icon: 'fa-clock', title: 'Gestión de SLA/SLO', desc: 'Aseguramiento de niveles de servicio alineados a la realidad operativa. Monitoreo y reporting de cumplimiento.', tags: ['SLA', 'SLO', 'SLM', 'KPIs'] },
     { id: 7, category: 'operaciones', icon: 'fa-copyright', title: 'Gestión y Análisis SAM', desc: 'Control, optimización y transparencia en activos de software. Gestión del ciclo de vida de licencias.', tags: ['SAM', 'Licencias', 'Optimización'] },
     { id: 8, category: 'operaciones', icon: 'fa-file-signature', title: 'Sourcing Estratégico (RFXs)', desc: 'Procesos de adquisición y licitación (RFI, RFQ, RFT, RFP) de alto impacto.', tags: ['RFI', 'RFQ', 'RFT', 'RFP'] },
@@ -1103,6 +1106,8 @@ function renderContacto(container) {
                             <option>Consultoría TI Estratégica</option>
                             <option>Gestión VMO</option>
                             <option>ITSM & ITIL</option>
+                            <option>IAM & CIAM - Gestión de Identidades</option>
+                            <option>Ciberseguridad & Protección Digital</option>
                             <option>Desarrollo de Capa Agéntica</option>
                             <option>IA Operacional Automatizada</option>
                             <option>Benchmarking & Cost Reduction</option>
@@ -1111,6 +1116,7 @@ function renderContacto(container) {
                             <option>Otro</option>
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label>Mensaje</label>
                         <textarea rows="4" placeholder="Cuéntenos sobre su proyecto o desafío..."></textarea>
