@@ -1206,19 +1206,20 @@ function renderServiceCards(cat) {
                     <h3>${s.title}</h3>
                     <p>${s.desc}</p>
                     <div class="service-tags">${s.tags.map(t => `<span class="service-tag">${t}</span>`).join('')}</div>
-                    <div class="flip-hint"><i class="fas fa-sync-alt"></i> Toca para ver más</div>
+                    <div class="flip-hint"><i class="fas fa-sync-alt"></i> Ver detalles</div>
                 </div>
                 <div class="flip-card-back">
                     <div class="flip-back-content">
-                        <h4>${s.detailTitle}</h4>
+                        <div class="flip-back-header">
+                            <div class="flip-back-icon"><i class="fas ${s.icon}"></i></div>
+                            <h4>${s.title}</h4>
+                        </div>
                         <p class="flip-desc">${s.detailDesc}</p>
                         <div class="flip-benefits">
-                            <h5><i class="fas fa-check-circle"></i> Beneficios clave</h5>
-                            <ul>${s.benefits.map(b => `<li>${b}</li>`).join('')}</ul>
+                            ${s.benefits.map(b => `<span class="flip-benefit-chip"><i class="fas fa-check"></i> ${b}</span>`).join('')}
                         </div>
                         <div class="flip-for">
-                            <h5><i class="fas fa-users"></i> Ideal para</h5>
-                            <p>${s.forWhom}</p>
+                            <i class="fas fa-users"></i> ${s.forWhom}
                         </div>
                         <button class="flip-back-close" data-close="${s.id}">
                             <i class="fas fa-times"></i> Cerrar
@@ -1232,7 +1233,6 @@ function renderServiceCards(cat) {
     // Attach click events for flip
     grid.querySelectorAll('.flip-card').forEach(card => {
         card.addEventListener('click', function(e) {
-            // Don't flip if clicking the close button
             if (e.target.closest('.flip-back-close')) return;
             this.classList.toggle('flipped');
         });
@@ -1246,6 +1246,7 @@ function renderServiceCards(cat) {
         });
     });
 }
+
 
 
 
