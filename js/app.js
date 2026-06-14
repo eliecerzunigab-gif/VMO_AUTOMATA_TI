@@ -23,24 +23,168 @@ const Store = {
 // ============================================
 
 const servicesData = [
-    { id: 1, category: 'estrategia', icon: 'fa-lightbulb', title: 'Consultoría TI Estratégica', desc: 'Acompañamiento en la toma de decisiones y transformación digital. Alineamos la tecnología con los objetivos de negocio.', tags: ['Estrategia', 'Transformación Digital', 'Roadmap TI'] },
-    { id: 2, category: 'estrategia', icon: 'fa-shield-halved', title: 'Gestión de Compliance y Gobierno IT', desc: 'Marcos de trabajo seguros, normados y escalables. Aseguramos el cumplimiento regulatorio y las mejores prácticas.', tags: ['COBIT', 'ISO 27001', 'GDPR', 'SOX'] },
-    { id: 3, category: 'estrategia', icon: 'fa-cubes', title: 'Gestión Estratégica VMO', desc: 'Optimización del valor del ecosistema de proveedores. Maximice el valor del portafolio con nuestra plataforma.', tags: ['VMO', 'Proveedores', 'Portafolio'] },
-    { id: 4, category: 'estrategia', icon: 'fa-scale-balanced', title: 'GRC Avanzado', desc: 'Evaluación integral de riesgos, continuidad operativa (BIA/BCP/DRP) y resiliencia empresarial.', tags: ['GRC', 'Riesgos', 'BCP', 'DRP', 'BIA'] },
-    { id: 15, category: 'estrategia', icon: 'fa-fingerprint', title: 'IAM & CIAM - Gestión de Identidades', desc: 'Soluciones integrales de Identidad y Acceso (IAM/CIAM): autenticación multifactor, single sign-on, gobierno de identidades y control de accesos basado en riesgos.', tags: ['IAM', 'CIAM', 'SSO', 'MFA', 'Autenticación'] },
-    { id: 16, category: 'estrategia', icon: 'fa-shield', title: 'Ciberseguridad & Protección Digital', desc: 'Arquitectura de seguridad zero trust, protección contra fraudes de identidad, seguridad en la nube y cumplimiento normativo de clase empresarial.', tags: ['Ciberseguridad', 'Zero Trust', 'Fraude', 'Cloud Security'] },
-    { id: 5, category: 'operaciones', icon: 'fa-gears', title: 'Gestión ITSM & ITIL', desc: 'Estandarización y eficiencia en la entrega de servicios TI. Implementación de procesos basados en ITIL.', tags: ['ITSM', 'ITIL', 'Service Desk'] },
-
-    { id: 6, category: 'operaciones', icon: 'fa-clock', title: 'Gestión de SLA/SLO', desc: 'Aseguramiento de niveles de servicio alineados a la realidad operativa. Monitoreo y reporting de cumplimiento.', tags: ['SLA', 'SLO', 'SLM', 'KPIs'] },
-    { id: 7, category: 'operaciones', icon: 'fa-copyright', title: 'Gestión y Análisis SAM', desc: 'Control, optimización y transparencia en activos de software. Gestión del ciclo de vida de licencias.', tags: ['SAM', 'Licencias', 'Optimización'] },
-    { id: 8, category: 'operaciones', icon: 'fa-file-signature', title: 'Sourcing Estratégico (RFXs)', desc: 'Procesos de adquisición y licitación (RFI, RFQ, RFT, RFP) de alto impacto.', tags: ['RFI', 'RFQ', 'RFT', 'RFP'] },
-    { id: 9, category: 'operaciones', icon: 'fa-chart-line', title: 'Benchmarking y Cost Reduction', desc: 'Proyectos de eficiencia financiera y maximización de inversiones TI.', tags: ['Benchmarking', 'Cost Reduction'] },
-    { id: 10, category: 'operaciones', icon: 'fa-arrow-right-arrow-left', title: 'Operational Model & Transition', desc: 'Diseño y aceleración de capacidades competitivas. Gestión de transiciones.', tags: ['Transición', 'Modelo Operativo'] },
-    { id: 11, category: 'innovacion', icon: 'fa-brain', title: 'Desarrollo de Capa Agéntica', desc: 'Sistemas autónomos para automatización de procesos complejos. Agentes inteligentes.', tags: ['IA Agéntica', 'Automatización'] },
-    { id: 12, category: 'innovacion', icon: 'fa-robot', title: 'IA Operacional Automatizada', desc: 'Software a medida para ejecución inteligente. Automatización con inteligencia artificial.', tags: ['IA', 'RPA', 'ML'] },
-    { id: 13, category: 'innovacion', icon: 'fa-code', title: 'Desarrollo de Productos & Web', desc: 'Soluciones digitales escalables centradas en experiencia de usuario.', tags: ['Web', 'Mobile', 'UX/UI'] },
-    { id: 14, category: 'innovacion', icon: 'fa-people-arrows', title: 'Change Management', desc: 'Estrategias de adopción y gestión del cambio para evolucionar con la tecnología.', tags: ['Change Management', 'Adopción'] }
+    {
+        id: 1, category: 'estrategia', icon: 'fa-lightbulb',
+        title: 'Consultoría TI Estratégica',
+        desc: 'Acompañamiento en la toma de decisiones y transformación digital. Alineamos la tecnología con los objetivos de negocio.',
+        tags: ['Estrategia', 'Transformación Digital', 'Roadmap TI'],
+        detailTitle: 'Transformamos su visión tecnológica',
+        detailDesc: 'Diagnosticamos su madurez digital, diseñamos hojas de ruta personalizadas y acompañamos la ejecución de iniciativas estratégicas. Reducimos riesgos, aceleramos time-to-market y alineamos cada inversión TI con los objetivos del negocio.',
+        benefits: ['Diagnóstico de madurez digital', 'Roadmap tecnológico 12-36 meses', 'ROI de iniciativas TI', 'Gobierno de datos y procesos'],
+        forWhom: 'CTOs, CIOs, Directores de TI y CEOs que buscan transformar su área de tecnología en un centro de valor estratégico.'
+    },
+    {
+        id: 2, category: 'estrategia', icon: 'fa-shield-halved',
+        title: 'Gestión de Compliance y Gobierno IT',
+        desc: 'Marcos de trabajo seguros, normados y escalables. Aseguramos el cumplimiento regulatorio y las mejores prácticas.',
+        tags: ['COBIT', 'ISO 27001', 'GDPR', 'SOX'],
+        detailTitle: 'Cumplimiento normativo sin fricción',
+        detailDesc: 'Implementamos marcos de gobierno TI (COBIT, ISO 38500) y aseguramos el cumplimiento de regulaciones como GDPR, SOX, PCI-DSS e ISO 27001. Automatizamos la gestión de riesgos y controles.',
+        benefits: ['Auditorías exitosas', 'Reducción de multas y sanciones', 'Automatización de controles', 'Reportes en tiempo real'],
+        forWhom: 'Oficiales de Compliance, Auditores Internos, CISO y Gerentes de Riesgo.'
+    },
+    {
+        id: 3, category: 'estrategia', icon: 'fa-cubes',
+        title: 'Gestión Estratégica VMO',
+        desc: 'Optimización del valor del ecosistema de proveedores. Maximice el valor del portafolio con nuestra plataforma.',
+        tags: ['VMO', 'Proveedores', 'Portafolio'],
+        detailTitle: 'Maximice el valor de su ecosistema de proveedores',
+        detailDesc: 'Diseñamos e implementamos oficinas de gestión de proveedores (VMO) que centralizan la administración del ciclo de vida completo: selección, contratación, evaluación y desvinculación.',
+        benefits: ['Consolidación de proveedores', 'Reducción de costos 15-25%', 'Gestión centralizada', 'KPIs y scorecards automatizados'],
+        forWhom: 'Gerentes de Procurement, VMO Managers, Directores de Operaciones TI.'
+    },
+    {
+        id: 4, category: 'estrategia', icon: 'fa-scale-balanced',
+        title: 'GRC Avanzado',
+        desc: 'Evaluación integral de riesgos, continuidad operativa (BIA/BCP/DRP) y resiliencia empresarial.',
+        tags: ['GRC', 'Riesgos', 'BCP', 'DRP', 'BIA'],
+        detailTitle: 'Resiliencia empresarial inteligente',
+        detailDesc: 'Evaluamos riesgos estratégicos, operacionales y tecnológicos. Diseñamos planes de continuidad (BCP), recuperación ante desastres (DRP) y análisis de impacto al negocio (BIA).',
+        benefits: ['Continuidad operativa 24/7', 'Planes de recuperación probados', 'Cumplimiento normativo', 'Reducción de exposición al riesgo'],
+        forWhom: 'Gerentes de Riesgo, Continuidad Operativa, CISO y Dirección General.'
+    },
+    {
+        id: 15, category: 'estrategia', icon: 'fa-fingerprint',
+        title: 'IAM & CIAM - Gestión de Identidades',
+        desc: 'Soluciones integrales de Identidad y Acceso (IAM/CIAM): autenticación multifactor, single sign-on, gobierno de identidades y control de accesos basado en riesgos.',
+        tags: ['IAM', 'CIAM', 'SSO', 'MFA', 'Autenticación'],
+        detailTitle: 'Identidad como centro de su seguridad',
+        detailDesc: 'Implementamos soluciones IAM/CIAM de clase empresarial: autenticación adaptativa, federación de identidades, ciclo de vida automatizado y control de accesos basado en políticas dinámicas.',
+        benefits: ['Autenticación sin fricción', 'Reducción de fraudes de identidad', 'Gobierno de accesos automatizado', 'SSO y MFA unificados'],
+        forWhom: 'CISO, Gerentes de Seguridad, Directores de TI y empresas con alta demanda de autenticación digital.'
+    },
+    {
+        id: 16, category: 'estrategia', icon: 'fa-shield',
+        title: 'Ciberseguridad & Protección Digital',
+        desc: 'Arquitectura de seguridad zero trust, protección contra fraudes de identidad, seguridad en la nube y cumplimiento normativo de clase empresarial.',
+        tags: ['Ciberseguridad', 'Zero Trust', 'Fraude', 'Cloud Security'],
+        detailTitle: 'Protección integral para su empresa digital',
+        detailDesc: 'Diseñamos arquitecturas Zero Trust, protegemos contra fraudes de identidad, aseguramos entornos cloud y establecemos centros de operaciones de seguridad (SOC) con respuesta automatizada.',
+        benefits: ['Arquitectura Zero Trust', 'Detección y respuesta en tiempo real', 'Seguridad cloud nativa', 'Protección contra ransomware'],
+        forWhom: 'CISO, Gerentes de Ciberseguridad, Directores de TI y empresas en proceso de transformación digital.'
+    },
+    {
+        id: 5, category: 'operaciones', icon: 'fa-gears',
+        title: 'Gestión ITSM & ITIL',
+        desc: 'Estandarización y eficiencia en la entrega de servicios TI. Implementación de procesos basados en ITIL.',
+        tags: ['ITSM', 'ITIL', 'Service Desk'],
+        detailTitle: 'Eficiencia operativa con estándares globales',
+        detailDesc: 'Implementamos y optimizamos procesos ITSM basados en ITIL 4: gestión de incidentes, problemas, cambios, activos y catálogo de servicios. Transformamos su Service Desk en un centro de excelencia.',
+        benefits: ['Reducción de incidentes 40%', 'Service Desk optimizado', 'Gestión de cambios sin riesgos', 'Catálogo de servicios automatizado'],
+        forWhom: 'ITSM Managers, Service Desk Leads, Directores de Operaciones TI.'
+    },
+    {
+        id: 6, category: 'operaciones', icon: 'fa-clock',
+        title: 'Gestión de SLA/SLO',
+        desc: 'Aseguramiento de niveles de servicio alineados a la realidad operativa. Monitoreo y reporting de cumplimiento.',
+        tags: ['SLA', 'SLO', 'SLM', 'KPIs'],
+        detailTitle: 'Acuerdos de servicio que cumplen lo que prometen',
+        detailDesc: 'Diseñamos, negociamos y monitoreamos Acuerdos de Nivel de Servicio (SLA) y Objetivos (SLO) con dashboards en tiempo real, alertas inteligentes y reportes ejecutivos automatizados.',
+        benefits: ['Cumplimiento > 99.5%', 'Penalizaciones automatizadas', 'Dashboards en tiempo real', 'Mejora continua de servicios'],
+        forWhom: 'VMO Managers, Gerentes de Contratos, ITSM Managers y Proveedores de Servicios.'
+    },
+    {
+        id: 7, category: 'operaciones', icon: 'fa-copyright',
+        title: 'Gestión y Análisis SAM',
+        desc: 'Control, optimización y transparencia en activos de software. Gestión del ciclo de vida de licencias.',
+        tags: ['SAM', 'Licencias', 'Optimización'],
+        detailTitle: 'Control total de su portafolio de software',
+        detailDesc: 'Implementamos Software Asset Management (SAM) para optimizar licencias, eliminar gastos innecesarios, asegurar compliance con fabricantes y maximizar el valor de sus inversiones en software.',
+        benefits: ['Ahorro 20-35% en licencias', 'Compliance con fabricantes', 'Inventario automatizado', 'Optimización continua'],
+        forWhom: 'SAM Managers, Gerentes de TI, Procurement y Finanzas.'
+    },
+    {
+        id: 8, category: 'operaciones', icon: 'fa-file-signature',
+        title: 'Sourcing Estratégico (RFXs)',
+        desc: 'Procesos de adquisición y licitación (RFI, RFQ, RFT, RFP) de alto impacto.',
+        tags: ['RFI', 'RFQ', 'RFT', 'RFP'],
+        detailTitle: 'Adquisiciones inteligentes, resultados superiores',
+        detailDesc: 'Diseñamos y ejecutamos procesos de sourcing completos: RFI para exploración de mercado, RFQ para cotizaciones, RFT para propuestas técnicas y RFP para selección integral de proveedores.',
+        benefits: ['Procesos estandarizados', 'Selección objetiva', 'Negociación informada', 'Ahorro 15-25% en adquisiciones'],
+        forWhom: 'Procurement Managers, VMO Managers, Directores de TI y Comités de Adquisiciones.'
+    },
+    {
+        id: 9, category: 'operaciones', icon: 'fa-chart-line',
+        title: 'Benchmarking y Cost Reduction',
+        desc: 'Proyectos de eficiencia financiera y maximización de inversiones TI.',
+        tags: ['Benchmarking', 'Cost Reduction'],
+        detailTitle: 'Maximice cada dólar invertido en TI',
+        detailDesc: 'Comparamos sus costos TI contra benchmarks de industria, identificamos oportunidades de optimización y ejecutamos proyectos de reducción de gastos recurrentes e inversiones sin sacrificar calidad.',
+        benefits: ['Benchmarks personalizados', 'Ahorros 15-30%', 'ROI medible', 'Mejores prácticas de industria'],
+        forWhom: 'CFOs, Directores de TI, Procurement Managers y VMO Managers.'
+    },
+    {
+        id: 10, category: 'operaciones', icon: 'fa-arrow-right-arrow-left',
+        title: 'Operational Model & Transition',
+        desc: 'Diseño y aceleración de capacidades competitivas. Gestión de transiciones.',
+        tags: ['Transición', 'Modelo Operativo'],
+        detailTitle: 'Transiciones suaves, resultados rápidos',
+        detailDesc: 'Diseñamos modelos operativos ágiles y gestionamos transiciones de servicios, infraestructura o contratos con metodologías probadas que minimizan riesgos y aseguran continuidad operativa.',
+        benefits: ['Transiciones sin interrupción', 'Modelos operativos optimizados', 'Time-to-value acelerado', 'Knowledge transfer asegurado'],
+        forWhom: 'Gerentes de Transición, Directores de Operaciones, VMO Managers.'
+    },
+    {
+        id: 11, category: 'innovacion', icon: 'fa-brain',
+        title: 'Desarrollo de Capa Agéntica',
+        desc: 'Sistemas autónomos para automatización de procesos complejos. Agentes inteligentes.',
+        tags: ['IA Agéntica', 'Automatización'],
+        detailTitle: 'Automatización inteligente con agentes autónomos',
+        detailDesc: 'Diseñamos e implementamos sistemas multi-agente que automatizan procesos complejos: agentes de decisión, orquestación, monitoreo y ejecución autónoma con capacidad de aprendizaje continuo.',
+        benefits: ['Automatización de procesos complejos', 'Agentes autónomos 24/7', 'Toma de decisiones en tiempo real', 'Escalabilidad sin límites'],
+        forWhom: 'Directores de Innovación, CTOs, Gerentes de Automatización y empresas con procesos intensivos en datos.'
+    },
+    {
+        id: 12, category: 'innovacion', icon: 'fa-robot',
+        title: 'IA Operacional Automatizada',
+        desc: 'Software a medida para ejecución inteligente. Automatización con inteligencia artificial.',
+        tags: ['IA', 'RPA', 'ML'],
+        detailTitle: 'IA que opera, no solo recomienda',
+        detailDesc: 'Desarrollamos software de IA operacional que ejecuta tareas de forma autónoma: desde RPA inteligente hasta modelos de machine learning en producción con monitoreo y retraining automatizado.',
+        benefits: ['RPA inteligente', 'ML en producción', 'Automatización end-to-end', 'Monitoreo y mejora continua'],
+        forWhom: 'Gerentes de Operaciones, CTOs, Directores de Datos y empresas con procesos repetitivos escalables.'
+    },
+    {
+        id: 13, category: 'innovacion', icon: 'fa-code',
+        title: 'Desarrollo de Productos & Web',
+        desc: 'Soluciones digitales escalables centradas en experiencia de usuario.',
+        tags: ['Web', 'Mobile', 'UX/UI'],
+        detailTitle: 'Productos digitales que marcan la diferencia',
+        detailDesc: 'Creamos productos digitales desde la conceptualización hasta el lanzamiento: aplicaciones web progresivas, plataformas SaaS, apps móviles y portales corporativos con diseño UX/UI de clase mundial.',
+        benefits: ['Time-to-market acelerado', 'UX/UI centrado en usuario', 'Arquitectura escalable', 'Soporte y evolución continua'],
+        forWhom: 'Product Managers, Directores de Digital, CTOs y startups en etapa de crecimiento.'
+    },
+    {
+        id: 14, category: 'innovacion', icon: 'fa-people-arrows',
+        title: 'Change Management',
+        desc: 'Estrategias de adopción y gestión del cambio para evolucionar con la tecnología.',
+        tags: ['Change Management', 'Adopción'],
+        detailTitle: 'El cambio exitoso comienza con las personas',
+        detailDesc: 'Diseñamos estrategias de gestión del cambio organizacional para asegurar la adopción efectiva de nuevas tecnologías, procesos y modelos de trabajo. Metodologías ADKAR, Kotter y ágiles.',
+        benefits: ['Adopción > 85%', 'Resistencia gestionada', 'Capacitación efectiva', 'Cultura de innovación'],
+        forWhom: 'Gerentes de RRHH, Directores de Transformación, Líderes de Proyecto y sponsors ejecutivos.'
+    }
 ];
+
 
 // ============================================
 // SEED DATA
@@ -1055,14 +1199,37 @@ function renderServiceCards(cat) {
     if (!grid) return;
     const filtered = cat === 'all' ? servicesData : servicesData.filter(s => s.category === cat);
     grid.innerHTML = filtered.map(s => `
-        <div class="service-card">
-            <div class="service-card-icon"><i class="fas ${s.icon}"></i></div>
-            <h3>${s.title}</h3>
-            <p>${s.desc}</p>
-            <div class="service-tags">${s.tags.map(t => `<span class="service-tag">${t}</span>`).join('')}</div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="service-card-icon"><i class="fas ${s.icon}"></i></div>
+                    <h3>${s.title}</h3>
+                    <p>${s.desc}</p>
+                    <div class="service-tags">${s.tags.map(t => `<span class="service-tag">${t}</span>`).join('')}</div>
+                    <div class="flip-hint"><i class="fas fa-sync-alt"></i> Toca para ver más</div>
+                </div>
+                <div class="flip-card-back">
+                    <div class="flip-back-content">
+                        <h4>${s.detailTitle}</h4>
+                        <p class="flip-desc">${s.detailDesc}</p>
+                        <div class="flip-benefits">
+                            <h5><i class="fas fa-check-circle"></i> Beneficios clave</h5>
+                            <ul>${s.benefits.map(b => `<li>${b}</li>`).join('')}</ul>
+                        </div>
+                        <div class="flip-for">
+                            <h5><i class="fas fa-users"></i> Ideal para</h5>
+                            <p>${s.forWhom}</p>
+                        </div>
+                        <div class="flip-back-close" onclick="event.stopPropagation();this.closest('.flip-card').classList.remove('flipped')">
+                            <i class="fas fa-times"></i> Cerrar
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     `).join('');
 }
+
 
 // ============================================
 // CONTACTO PAGE
