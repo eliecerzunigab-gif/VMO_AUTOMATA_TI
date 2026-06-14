@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nexum Solutions VMO - Plataforma de Gestión Estratégica</title>
+    <meta name="description" content="Nexum Solutions VMO - Plataforma integral para la gestión estratégica de proveedores, contratos, SLA y gobierno TI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- ===== SIDEBAR ===== -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="sidebar-logo">
+                    <span class="logo-icon">◈</span>
+                    <span class="logo-text">Nexum<span class="logo-accent">VMO</span></span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Principal</div>
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="proveedores">
+                    <i class="fas fa-building"></i>
+                    <span>Proveedores</span>
+                </a>
+                <a href="#" class="nav-item" data-page="contratos">
+                    <i class="fas fa-file-contract"></i>
+                    <span>Contratos</span>
+                </a>
+                <a href="#" class="nav-item" data-page="evaluaciones">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Evaluaciones</span>
+                </a>
+                <a href="#" class="nav-item" data-page="sla">
+                    <i class="fas fa-clock"></i>
+                    <span>SLA / SLO</span>
+                </a>
+                <a href="#" class="nav-item" data-page="rfx">
+                    <i class="fas fa-file-signature"></i>
+                    <span>RFXs</span>
+                </a>
+
+                <div class="nav-section-label">Herramientas</div>
+                <a href="#" class="nav-item" data-page="benchmarking">
+                    <i class="fas fa-calculator"></i>
+                    <span>Benchmarking</span>
+                </a>
+                <a href="#" class="nav-item" data-page="reportes">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Reportes</span>
+                </a>
+
+                <div class="nav-section-label">Empresa</div>
+                <a href="#" class="nav-item" data-page="servicios">
+                    <i class="fas fa-concierge-bell"></i>
+                    <span>Catálogo Servicios</span>
+                </a>
+                <a href="#" class="nav-item" data-page="contacto">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contacto</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="user-avatar">EZ</div>
+                    <div class="user-info">
+                        <span class="user-name">Nexum Solutions</span>
+                        <span class="user-role">VMO Platform</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ===== OVERLAY ===== -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <button class="topbar-menu" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar proveedores, contratos..." id="globalSearch">
+                </div>
+                <div class="topbar-actions">
+                    <button class="topbar-btn" onclick="exportVMOData()" title="Exportar datos">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="topbar-btn" onclick="resetVMODemo()" title="Reiniciar demo">
+                        <i class="fas fa-rotate"></i>
+                    </button>
+                    <div class="topbar-notification">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ===== PAGE CONTENT ===== -->
+            <div class="page-content" id="pageContent">
+                <!-- Each page is rendered dynamically by JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== MODALS ===== -->
+    <div class="modal" id="modalProveedor">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalProveedorTitle">Nuevo Proveedor</h3>
+                <button class="modal-close" onclick="closeModal('modalProveedor')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="formProveedor">
+                <input type="hidden" id="editProveedorId">
+                <div class="form-group">
+                    <label>Nombre del Proveedor</label>
+                    <input type="text" id="provNombre" required placeholder="Ej: CloudTech Solutions">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select id="provCategoria">
+                            <option>Infraestructura</option>
+                            <option>Software</option>
+                            <option>Servicios Profesionales</option>
+                            <option>Cloud & SaaS</option>
+                            <option>Hardware</option>
+                            <option>Consultoría</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="provEstado">
+                            <option>Activo</option>
+                            <option>En Evaluación</option>
+                            <option>En Transición</option>
+                            <option>Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Contacto</label>
+                        <input type="text" id="provContacto" placeholder="Nombre contacto">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="provEmail" placeholder="email@proveedor.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Valor Contrato Anual ($)</label>
+                    <input type="number" id="provValor" min="0" placeholder="0">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modalProveedor')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Proveedor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="modalContrato">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalContratoTitle">Nuevo Contrato</h3>
+                <button class="modal-close" onclick="closeModal('modalContrato')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="formContrato">
+                <input type="hidden" id="editContratoId">
+                <div class="form-group">
+                    <label>Nombre del Contrato</label>
+                    <input type="text" id="contNombre" required placeholder="Ej: Infraestructura Cloud 2026">
+                </div>
+                <div class="form-group">
+                    <label>Proveedor</label>
+                    <select id="contProveedor"></select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Fecha Inicio</label>
+                        <input type="date" id="contInicio">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha Fin</label>
+                        <input type="date" id="contFin">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Valor Total ($)</label>
+                        <input type="number" id="contValor" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="contEstado">
+                            <option>Vigente</option>
+                            <option>Por Vencer</option>
+                            <option>Vencido</option>
+                            <option>En Negociación</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modalContrato')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Contrato</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="modalEvaluacion">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nueva Evaluación</h3>
+                <button class="modal-close" onclick="closeModal('modalEvaluacion')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="formEvaluacion">
+                <div class="form-group">
+                    <label>Proveedor</label>
+                    <select id="evalProveedor"></select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Calidad (1-10)</label>
+                        <input type="number" id="evalCalidad" min="1" max="10" value="7">
+                    </div>
+                    <div class="form-group">
+                        <label>Cumplimiento (1-10)</label>
+                        <input type="number" id="evalCumplimiento" min="1" max="10" value="7">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Costos (1-10)</label>
+                        <input type="number" id="evalCostos" min="1" max="10" value="7">
+                    </div>
+                    <div class="form-group">
+                        <label>Innovación (1-10)</label>
+                        <input type="number" id="evalInnovacion" min="1" max="10" value="7">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modalEvaluacion')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Evaluación</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="modalSLA">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nuevo SLA</h3>
+                <button class="modal-close" onclick="closeModal('modalSLA')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="formSLA">
+                <div class="form-group">
+                    <label>Proveedor</label>
+                    <select id="slaProveedor"></select>
+                </div>
+                <div class="form-group">
+                    <label>Servicio</label>
+                    <input type="text" id="slaServicio" placeholder="Ej: Soporte Nivel 1">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Uptime Objetivo (%)</label>
+                        <input type="number" id="slaUptime" min="90" max="100" step="0.1" value="99.5">
+                    </div>
+                    <div class="form-group">
+                        <label>Tiempo Respuesta (hrs)</label>
+                        <input type="number" id="slaRespuesta" min="0.5" step="0.5" value="4">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Cumplimiento Actual (%)</label>
+                        <input type="number" id="slaCumplimiento" min="0" max="100" step="0.1" value="98">
+                    </div>
+                    <div class="form-group">
+                        <label>Penalización</label>
+                        <input type="text" id="slaPenalizacion" placeholder="Ej: 5% descuento">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modalSLA')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar SLA</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="modalRFX">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nuevo Proceso RFX</h3>
+                <button class="modal-close" onclick="closeModal('modalRFX')"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="formRFX">
+                <div class="form-group">
+                    <label>Tipo</label>
+                    <select id="rfxTipo">
+                        <option value="RFI">RFI - Solicitud de Información</option>
+                        <option value="RFQ">RFQ - Solicitud de Cotización</option>
+                        <option value="RFT">RFT - Solicitud de Propuesta Técnica</option>
+                        <option value="RFP">RFP - Solicitud de Propuesta</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="rfxTitulo" placeholder="Ej: Adquisición infraestructura cloud">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Proveedores Invitados</label>
+                        <input type="text" id="rfxProveedores" placeholder="Ej: 5">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha Límite</label>
+                        <input type="date" id="rfxFechaLimite">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Estado</label>
+                    <select id="rfxEstado">
+                        <option>Borrador</option>
+                        <option>En Proceso</option>
+                        <option>En Evaluación</option>
+                        <option>Adjudicado</option>
+                        <option>Cancelado</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modalRFX')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar RFX</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

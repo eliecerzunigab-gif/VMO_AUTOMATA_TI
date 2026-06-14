@@ -1,0 +1,12 @@
+{
+  "name": "nexum-solutions-vmo",
+  "version": "1.0.0",
+  "description": "Nexum Solutions - Plataforma de Gestión Estratégica VMO y Catálogo de Servicios TI",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server --port=3000"
+  },
+  "keywords": ["VMO", "ITSM", "ITIL", "SAM", "Gobierno TI", "Consultoría"],
+  "author": "Nexum Solutions"
+}
