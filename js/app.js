@@ -1199,31 +1199,25 @@ function renderServiceCards(cat) {
     if (!grid) return;
     const filtered = cat === 'all' ? servicesData : servicesData.filter(s => s.category === cat);
     grid.innerHTML = filtered.map(s => `
-        <div class="flip-card" data-id="${s.id}">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <div class="service-card-icon"><i class="fas ${s.icon}"></i></div>
-                    <h3>${s.title}</h3>
-                    <p>${s.desc}</p>
-                    <div class="service-tags">${s.tags.map(t => `<span class="service-tag">${t}</span>`).join('')}</div>
-                    <div class="flip-hint"><i class="fas fa-sync-alt"></i> Ver detalles</div>
+        <div class="flip-card" data-id="${s.id}" style="perspective:1000px;height:320px;cursor:pointer;position:relative;">
+            <div class="flip-card-inner" style="position:relative;width:100%;height:100%;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);transform-style:preserve-3d;">
+                <div class="flip-card-front" style="position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;overflow:hidden;background:var(--bg-card);border:1px solid var(--border);padding:18px;display:flex;flex-direction:column;">
+                    <div class="service-card-icon" style="width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:rgba(124,92,252,0.12);border-radius:12px;margin-bottom:12px;font-size:1.1rem;color:var(--primary-light);flex-shrink:0;"><i class="fas ${s.icon}"></i></div>
+                    <h3 style="font-size:0.95rem;font-weight:600;margin-bottom:6px;">${s.title}</h3>
+                    <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;margin-bottom:10px;flex:1;">${s.desc}</p>
+                    <div class="service-tags" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;">${s.tags.map(t => `<span class="service-tag" style="padding:3px 8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;font-size:0.68rem;color:var(--text-muted);">${t}</span>`).join('')}</div>
+                    <div class="flip-hint" style="font-size:0.7rem;color:var(--text-muted);text-align:center;padding:6px;border-top:1px solid var(--border);margin-top:auto;opacity:0.6;"><i class="fas fa-sync-alt"></i> Ver detalles</div>
                 </div>
-                <div class="flip-card-back">
-                    <div class="flip-back-content">
-                        <div class="flip-back-header">
-                            <div class="flip-back-icon"><i class="fas ${s.icon}"></i></div>
-                            <h4>${s.title}</h4>
+                <div class="flip-card-back" style="position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;overflow:hidden;background:linear-gradient(145deg,var(--bg-card),#1a1a45);border:1px solid rgba(124,92,252,0.25);padding:16px;display:flex;flex-direction:column;transform:rotateY(180deg);">
+                    <div class="flip-back-content" style="display:flex;flex-direction:column;gap:8px;height:100%;">
+                        <div class="flip-back-header" style="display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid rgba(124,92,252,0.15);">
+                            <div class="flip-back-icon" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(124,92,252,0.15);border-radius:8px;font-size:0.85rem;color:var(--primary-light);flex-shrink:0;"><i class="fas ${s.icon}"></i></div>
+                            <h4 style="font-size:0.85rem;font-weight:700;color:var(--primary-light);line-height:1.2;">${s.title}</h4>
                         </div>
-                        <p class="flip-desc">${s.detailDesc}</p>
-                        <div class="flip-benefits">
-                            ${s.benefits.map(b => `<span class="flip-benefit-chip"><i class="fas fa-check"></i> ${b}</span>`).join('')}
-                        </div>
-                        <div class="flip-for">
-                            <i class="fas fa-users"></i> ${s.forWhom}
-                        </div>
-                        <button class="flip-back-close" data-close="${s.id}">
-                            <i class="fas fa-times"></i> Cerrar
-                        </button>
+                        <p class="flip-desc" style="font-size:0.72rem;color:var(--text-secondary);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${s.detailDesc}</p>
+                        <div class="flip-benefits" style="display:flex;flex-wrap:wrap;gap:4px;">${s.benefits.map(b => `<span class="flip-benefit-chip" style="font-size:0.65rem;color:var(--text);background:rgba(0,210,211,0.08);border:1px solid rgba(0,210,211,0.12);border-radius:4px;padding:2px 7px;display:inline-flex;align-items:center;gap:4px;"><i class="fas fa-check" style="font-size:0.55rem;color:var(--secondary);"></i> ${b}</span>`).join('')}</div>
+                        <div class="flip-for" style="font-size:0.68rem;color:var(--text-muted);line-height:1.4;display:flex;align-items:flex-start;gap:6px;padding:6px 8px;background:rgba(255,255,255,0.02);border-radius:6px;border:1px solid var(--border);"><i class="fas fa-users" style="color:var(--accent2);font-size:0.65rem;margin-top:2px;flex-shrink:0;"></i> ${s.forWhom}</div>
+                        <button class="flip-back-close" data-close="${s.id}" style="font-size:0.68rem;color:var(--text-muted);text-align:center;padding:5px;border-top:1px solid var(--border);cursor:pointer;margin-top:auto;flex-shrink:0;background:none;border-left:none;border-right:none;border-bottom:none;font-family:inherit;width:100%;"><i class="fas fa-times"></i> Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -1234,7 +1228,14 @@ function renderServiceCards(cat) {
     grid.querySelectorAll('.flip-card').forEach(card => {
         card.addEventListener('click', function(e) {
             if (e.target.closest('.flip-back-close')) return;
-            this.classList.toggle('flipped');
+            const inner = this.querySelector('.flip-card-inner');
+            if (this.classList.contains('flipped')) {
+                this.classList.remove('flipped');
+                inner.style.transform = 'rotateY(0deg)';
+            } else {
+                this.classList.add('flipped');
+                inner.style.transform = 'rotateY(180deg)';
+            }
         });
     });
 
@@ -1242,10 +1243,13 @@ function renderServiceCards(cat) {
     grid.querySelectorAll('.flip-back-close').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
-            this.closest('.flip-card').classList.remove('flipped');
+            const card = this.closest('.flip-card');
+            card.classList.remove('flipped');
+            card.querySelector('.flip-card-inner').style.transform = 'rotateY(0deg)';
         });
     });
 }
+
 
 
 
