@@ -1894,7 +1894,16 @@ body {
     perspective: 1000px;
     height: 320px;
     cursor: pointer;
+    position: relative;
 }
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    align-items: stretch;
+}
+
 
 .flip-card-inner {
     position: relative;

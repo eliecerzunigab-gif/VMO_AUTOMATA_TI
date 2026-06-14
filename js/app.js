@@ -1199,7 +1199,7 @@ function renderServiceCards(cat) {
     if (!grid) return;
     const filtered = cat === 'all' ? servicesData : servicesData.filter(s => s.category === cat);
     grid.innerHTML = filtered.map(s => `
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card" data-id="${s.id}">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
                     <div class="service-card-icon"><i class="fas ${s.icon}"></i></div>
@@ -1220,15 +1220,33 @@ function renderServiceCards(cat) {
                             <h5><i class="fas fa-users"></i> Ideal para</h5>
                             <p>${s.forWhom}</p>
                         </div>
-                        <div class="flip-back-close" onclick="event.stopPropagation();this.closest('.flip-card').classList.remove('flipped')">
+                        <button class="flip-back-close" data-close="${s.id}">
                             <i class="fas fa-times"></i> Cerrar
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     `).join('');
+
+    // Attach click events for flip
+    grid.querySelectorAll('.flip-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Don't flip if clicking the close button
+            if (e.target.closest('.flip-back-close')) return;
+            this.classList.toggle('flipped');
+        });
+    });
+
+    // Attach close events
+    grid.querySelectorAll('.flip-back-close').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.closest('.flip-card').classList.remove('flipped');
+        });
+    });
 }
+
 
 
 // ============================================
